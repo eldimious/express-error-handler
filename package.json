@@ -1,0 +1,55 @@
+{
+  "name": "@dimosbotsaris/express-error-handler",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Simple middleware to handle errors for JSON APIs in development and production environments.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "api",
+    "express",
+    "error",
+    "handler",
+    "error-handler",
+    "json",
+    "node",
+    "express-middleware"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
+    "dev": "npx ts-node src/index.ts",
+    "tests": "ts-mocha tests/**/*.test.ts",
+    "lint": "eslint src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eldimious/express-error-handler.git"
+  },
+  "author": "Dimos Botsaris <botsaris.d@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eldimious/express-error-handler/issues"
+  },
+  "homepage": "https://github.com/eldimious/express-error-handler#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/expect": "^24.3.0",
+    "@types/express": "*",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^17.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "chai": "^4.3.4",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "mocha": "^9.2.0",
+    "node-mocks-http": "^1.11.0",
+    "prettier": "^2.5.1",
+    "ts-mocha": "^8.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
