@@ -1,5 +1,11 @@
 import { Response, Request, NextFunction } from 'express';
-import { isHTTPErrorStatus } from './validation';
+
+function isHTTPErrorStatus(httpStatus: number): number | undefined {
+  if (httpStatus < 600 && httpStatus >= 400) {
+    return httpStatus;
+  }
+  return undefined;
+}
 
 export interface IExpressErrorRespone {
   status: number,
@@ -14,7 +20,7 @@ export interface IExpressErrorHandlerConfig {
   trace: boolean,
 }
 
-const createResponseError = (err: any, config: IExpressErrorHandlerConfig): IExpressErrorRespone => ({
+const createExpressErrorResponse = (err: any, config: IExpressErrorHandlerConfig): IExpressErrorRespone => ({
   status: err.status,
   error: {
     message: err.message,
@@ -26,7 +32,8 @@ export default function errorHandler(config: IExpressErrorHandlerConfig = { trac
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (err: any, req: Request, res: Response, next: NextFunction): Response<any, Record<string, any>> => {
     const httpErrorStatus = isHTTPErrorStatus(err.status) || 500;
+    // eslint-disable-next-line no-param-reassign
     err.status = httpErrorStatus;
-    return res.status(httpErrorStatus).json(createResponseError(err, config));
+    return res.status(httpErrorStatus).json(createExpressErrorResponse(err, config));
   };
 }

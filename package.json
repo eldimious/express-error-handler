@@ -2,7 +2,7 @@
   "name": "@dimosbotsaris/express-error-handler",
   "version": "1.0.0",
   "private": false,
-  "description": "Simple middleware to handle errors for JSON APIs in development and production environments.",
+  "description": "Simple Express.js middleware middleware to handle errors for APIs and return correct status, error message and trace.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
@@ -19,7 +19,7 @@
     "build": "tsc",
     "prepublish": "tsc",
     "dev": "npx ts-node src/index.ts",
-    "tests": "ts-mocha tests/**/*.test.ts",
+    "test": "ts-mocha tests/**/*.test.ts",
     "lint": "eslint src/**/*.ts"
   },
   "repository": {

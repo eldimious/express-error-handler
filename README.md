@@ -16,8 +16,7 @@
   </a>
 </p>
 
-> Simple middleware to handle errors for JSON APIs in development and production environments.
-
+> Simple Express.js middleware middleware to handle errors for APIs and return correct status, error message and trace.
 
 ## Install
 

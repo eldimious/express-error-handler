@@ -43,4 +43,19 @@ describe('test express error handler:', () => {
     expect(response.status).to.be.equal(httpStatus);
     expect(response.error.trace).to.be.equal(undefined);
   });
+
+  it('should return 500 as http status code is not valid', () => {
+    const httpStatus = 600;
+    const errMsg = 'internal server error';
+    const req = httpMocks.createRequest();
+    const res = httpMocks.createResponse();
+    const error: any = new Error(errMsg);
+    error.status = httpStatus;
+    errorHandler()(error, req, res, () => {});
+    const response = JSON.parse(res._getData());
+  
+    expect(response.status).to.be.equal(500);
+    expect(response.error.message).to.be.equal(errMsg);
+    expect(response.error.trace).to.be.equal(error.stack);
+  });
 });
