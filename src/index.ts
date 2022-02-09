@@ -28,7 +28,7 @@ const createExpressErrorResponse = (err: any, config: IExpressErrorHandlerConfig
   },
 });
 
-export default function errorHandler(config: IExpressErrorHandlerConfig = { trace: true }) {
+export function errorHandler(config: IExpressErrorHandlerConfig = { trace: true }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (err: any, req: Request, res: Response, next: NextFunction): Response<any, Record<string, any>> => {
     const httpErrorStatus = isHTTPErrorStatus(err.status) || 500;

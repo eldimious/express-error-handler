@@ -27,7 +27,7 @@ npm install --save @dimosbotsaris/express-error-handler
 ## Usage
 
 ```sh
-import errorHandler from '@dimosbotsaris/express-error-handler';
+import { errorHandler } from '@dimosbotsaris/express-error-handler';
 
 app.get('/bar', (req: Request, res: Response, next: NextFunction) => {
   const error = new Error('Validation Error');

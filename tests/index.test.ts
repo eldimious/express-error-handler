@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
-import errorHandler from '../src';
+import { errorHandler } from '../src';
 
 describe('test express error handler:', () => {
   it('if error status is 401, should return 401', () => {

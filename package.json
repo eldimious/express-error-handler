@@ -1,6 +1,6 @@
 {
   "name": "@dimosbotsaris/express-error-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Simple Express.js middleware middleware to handle errors for APIs and return correct status, error message and trace.",
   "main": "dist/index.js",
