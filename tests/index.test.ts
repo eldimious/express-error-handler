@@ -16,6 +16,25 @@ describe('test express error handler:', () => {
     expect(response.status).to.be.equal(httpStatus);
     expect(response.error.message).to.be.equal(errMsg);
     expect(response.error.trace).to.be.equal(error.stack);
+    expect(response.error.code).to.be.equal(undefined);
+  });
+
+  it('if error status is 401, should return 401 and custom code', () => {
+    const httpStatus = 401;
+    const errCode = 'UNAUTHORIZED_CODE'
+    const errMsg = 'unauthorized user';
+    const req = httpMocks.createRequest();
+    const res = httpMocks.createResponse();
+    const error: any = new Error(errMsg);
+    error.status = httpStatus;
+    error.code = errCode;
+    errorHandler()(error, req, res, () => {});
+    const response = JSON.parse(res._getData());
+
+    expect(response.status).to.be.equal(httpStatus);
+    expect(response.error.message).to.be.equal(errMsg);
+    expect(response.error.trace).to.be.equal(error.stack);
+    expect(response.error.code).to.be.equal(errCode);
   });
 
   it('should return 500 as http status code, as error does not include any status', () => {
@@ -28,6 +47,7 @@ describe('test express error handler:', () => {
 
     expect(response.status).to.be.equal(defaultHttpStatus);
     expect(response.error.trace).to.be.equal(error.stack);
+    expect(response.error.code).to.be.equal(undefined);
   });
 
   it('should return 401 as http status code without trace', () => {
@@ -42,6 +62,7 @@ describe('test express error handler:', () => {
   
     expect(response.status).to.be.equal(httpStatus);
     expect(response.error.trace).to.be.equal(undefined);
+    expect(response.error.code).to.be.equal(undefined);
   });
 
   it('should return 500 as http status code is not valid', () => {
@@ -57,5 +78,6 @@ describe('test express error handler:', () => {
     expect(response.status).to.be.equal(500);
     expect(response.error.message).to.be.equal(errMsg);
     expect(response.error.trace).to.be.equal(error.stack);
+    expect(response.error.code).to.be.equal(undefined);
   });
 });

@@ -24,6 +24,7 @@ const createExpressErrorResponse = (err: any, config: IExpressErrorHandlerConfig
   status: err.status,
   error: {
     message: err.message,
+    code: err.code,
     trace: config.trace ? err.stack : undefined,
   },
 });
