@@ -1,8 +1,8 @@
-name: '[express-error-handler] Running Tests on merging to Master Branch'
+name: '[express-error-handler] Running Tests on merging to main Branch'
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   tests:
